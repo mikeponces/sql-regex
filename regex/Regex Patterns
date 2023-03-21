@@ -1,0 +1,51 @@
+Character Sets:
+
+/smitty|james/
+/smitty|james|ar+/ // some Pirates just say "ar", will multiple counts of "r"
+/[a-z]+/ // match all names
+/[a-zA-Z]+/ // match names with Capital Letters
+/[a-z\s]+/ // match spaces
+/[\w\s]/ // match suffix (3rd)
+
+
+Anchors (sara@example.com):
+
+/\w+@\w+\.\w+/ // if . only, it will match even !
+/\w+@\w+\.(com|net|org|edu)/i // case-insensitive
+/^\w+@\w+\.(com|net|org|edu)$/i // anchors prevent leading and trailing text
+
+
+
+Grouping and Optional:
+
+/\bok\b/ // match ok, but not okie dokie
+/(\bok(ay)?\b/i  // match ok and okay
+/(\b(ok(ay)?|sure)?)\b/i  // match sure
+/(\b(ok(ay)?|sure|y(es)?))\b/i // match y and yes
+
+
+
+Negation and Character Count:
+
+/^\D+$/ // anything not a digit
+/^\D{20,40}$/ // character count range from 20-40
+
+
+
+Global & Multi-Line Identifiers:
+
+/penguin/ig // global modifier matches ALL, not just FIRST
+/\w+penguin/ig // match diff types of penguins
+/^\w+penguin$/mig // multi-line modifier for anchors to work per line
+/^\w+(penguin|albatross|tern)$/mig // match diff types of penguins
+
+
+
+Capture Groups:
+
+/\d+\s[\w\s]+\w{4,6},\s/ // house number, space, words, 4-6 char word, comma, space
+/[\w\s]+,\s/ // city, comma, space
+/\w{2}\s/ // state, space
+/\d{5}/ // zip code
+/^\d+\s[\w\s]+\w{4,6},\s[\w\s]+,\s\w{2}\s\d{5}$/ // complete
+/^(\d+\s[\w\s]+\w{4,6}),\s([\w\s]+),\s(\w{2})\s(\d{5})$/ // capture groups
